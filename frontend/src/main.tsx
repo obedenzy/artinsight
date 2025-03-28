@@ -1,27 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom'; // Import Router here
-import App from './App.tsx';
-import './index.css';
-import { AuthProvider } from './context/AuthContext.tsx'; // Import AuthProvider
-// import { validateEnv } from './config/env.ts'; // Import validateEnv
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+// Temporarily remove Router import
+// import { BrowserRouter as Router } from 'react-router-dom'
+import App from './App.tsx'
+import './index.css'
 
-// // Validate environment variables on startup
-// try {
-//   validateEnv();
-// } catch (error) {
-//   console.error("Application startup failed due to invalid environment variables.");
-//   // Optionally render an error message to the user or halt execution
-//   // For now, we log and potentially let the app crash or misbehave later.
-// }
-
-
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Router> {/* Router wraps AuthProvider and App */}
-      <AuthProvider>
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      {/* Temporarily remove Router */}
+      {/* <Router> */}
         <App />
-      </AuthProvider>
-    </Router>
-  </React.StrictMode>,
-);
+      {/* </Router> */}
+    </React.StrictMode>,
+  )
+} else {
+  console.error("Failed to find the root element. Check your index.html file.");
+}
